@@ -2,8 +2,8 @@ body, html {
   height: 100%;
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #111111;
-  color: white;
+  background-color: #0000 !important;
+  color: white !important;
 }
 
 /* Full-page background image with blur */
@@ -232,22 +232,6 @@ body, html {
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  /* --background-color: #ffffff; */
-   /* Background color for the entire website, including individual sections */
-  --default-color: #0a0a0a; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #030303; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #0078ff; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #0a0a0a; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #030303; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-}
-
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: #ffffff;  /* The default color of the main navmenu links */
-  --nav-hover-color: #ffffff; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-}
 
 
 

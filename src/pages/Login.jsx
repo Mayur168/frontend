@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -6,9 +6,9 @@ import { login } from '../API/Api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const Login = () => {
-  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login: setAuth } = useAuth();
+  const { login: setAuth, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const mutation = useMutation({
@@ -16,7 +16,6 @@ export const Login = () => {
     onSuccess: (data) => {
       if (data.success) {
         setAuth(true); // Set authenticated state
-        navigate('/contactdetails', { replace: true });
       } else {
         alert('Login failed. Please check your credentials.');
       }
@@ -27,14 +26,21 @@ export const Login = () => {
     },
   });
 
+  // Navigate after isAuthenticated updates
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/contactdetails', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const phoneRegex = /^\+?[1-9]\d{1,14}$/; // Basic phone number validation
-    if (!phoneRegex.test(phone)) {
-      alert('Please enter a valid phone number.');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address.');
       return;
     }
-    mutation.mutate({ phone, password });
+    mutation.mutate({ email, password });
   };
 
   return (
@@ -57,15 +63,15 @@ export const Login = () => {
         <h1 className="text-center mb-4 text-primary">Welcome Admin</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="phone" className="form-label fw-bold">Phone Number</label>
+            <label htmlFor="email" className="form-label fw-bold">Email Address</label>
             <input
-              type="tel"
+              type="email"
               className="form-control rounded-pill ps-4"
-              id="phone"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="Enter your phone number"
+              placeholder="Enter your email address"
               style={{ borderColor: '#007bff', transition: 'all 0.3s ease' }}
             />
           </div>

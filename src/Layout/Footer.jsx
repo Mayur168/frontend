@@ -6,10 +6,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Footer = () => {
   return (
-    <footer className="bg-dark text-white pt-3 pb-1 mt-auto">
+    <footer className="bg-dark text-white pt-3 pb-1 mt-auto ">
       <div className="container">
         {/* Flex row for contact details */}
-        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center  text-center">
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center text-center">
           <div>
             <IoMdContact style={{ fontSize: "22px", marginRight: "8px" }} />
             +91-7447849409

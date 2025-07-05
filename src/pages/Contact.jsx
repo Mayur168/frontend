@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { createContact } from "../API/Api"; // Import the createContact function
+import Swal from "sweetalert2"; // Import SweetAlert2
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,19 +10,46 @@ export const Contact = () => {
     suggestion: "",
     rating: "",
   });
+  const [error, setError] = useState(null); // State for error handling
+  const [isSubmitting, setIsSubmitting] = useState(false); // State for submit button loading
 
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
+    setError(null); // Clear error on form change
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", formData);
-    alert("Thank you for your feedback!");
-    setFormData({ name: "", email: "", suggestion: "", rating: "" });
+    setIsSubmitting(true); // Set loading state
+    setError(null); // Clear previous errors
+
+    try {
+      const response = await createContact({
+        name: formData.name,
+        email: formData.email,
+        suggestion: formData.suggestion,
+        rating: parseInt(formData.rating), // Convert rating to number
+      });
+
+      if (response) {
+        await Swal.fire({
+          icon: "success",
+          title: "Success!",
+          text: "Thank you for your feedback! Contact submitted successfully.",
+          confirmButtonColor: "#0d6efd",
+          timer: 3000,
+          timerProgressBar: true,
+        });
+        setFormData({ name: "", email: "", suggestion: "", rating: "" }); // Reset form
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to submit feedback. Please try again.");
+    } finally {
+      setIsSubmitting(false); // Reset loading state
+    }
   };
 
   return (
@@ -79,6 +108,10 @@ export const Contact = () => {
             box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
             background: #0b5ed7;
           }
+          .btn-primary:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+          }
           .form-label {
             color: #333;
             font-size: 1rem;
@@ -88,6 +121,12 @@ export const Contact = () => {
             color: #0d6efd;
             font-weight: 700;
             font-size: 1.8rem;
+          }
+          .error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            text-align: center;
           }
           @media (max-width: 768px) {
             .contact-form-card {
@@ -110,7 +149,7 @@ export const Contact = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-7 col-lg-5">
-              <div className="contact-form-card">
+              <div className="contact-form-card mt-4">
                 <h2 className="section-title text-center mb-3">Contact Us</h2>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
@@ -170,9 +209,10 @@ export const Contact = () => {
                       <option value="5">5 - Excellent</option>
                     </select>
                   </div>
+                  {error && <div className="error-message">{error}</div>}
                   <div className="text-center">
-                    <button type="submit" className="btn btn-primary">
-                      Submit Feedback
+                    <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                      {isSubmitting ? "Submitting..." : "Submit Feedback"}
                     </button>
                   </div>
                 </form>

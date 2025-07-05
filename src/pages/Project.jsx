@@ -189,12 +189,10 @@ export const Project = () => {
             border-radius: 12px;
             border: none;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            background: #ffffff;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           }
           .custom-modal .modal-header {
             background: #2563eb;
-            color: #ffffff;
             border-bottom: none;
             padding: 1.25rem;
           }

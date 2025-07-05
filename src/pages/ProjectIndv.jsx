@@ -131,6 +131,7 @@
 //     </div>
 //   );
 // };
+
 import React from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -198,6 +199,7 @@ export const ProjectIndv = () => {
             fontWeight: '500',
             borderWidth: '2px',
             fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+            zIndex: 10,
           }}
           onMouseEnter={(e) => (e.target.style.transform = 'scale(1.05)')}
           onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
@@ -216,6 +218,7 @@ export const ProjectIndv = () => {
               fontWeight: '500',
               borderWidth: '2px',
               fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+              zIndex: 10,
             }}
             onMouseEnter={(e) => (e.target.style.transform = 'scale(1.05)')}
             onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
@@ -240,6 +243,7 @@ export const ProjectIndv = () => {
             fontWeight: '500',
             borderWidth: '2px',
             fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+            zIndex: 10,
           }}
           onMouseEnter={(e) => (e.target.style.transform = 'scale(1.05)')}
           onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
@@ -254,39 +258,31 @@ export const ProjectIndv = () => {
   const { name, project_description, project_link, project_image } = project;
 
   return (
-    <div className="container mt-5 pt-4 pt-md-5">
-      <div className="d-flex align-items-center justify-content-center mb-4 mb-md-5 position-relative">
-        <NavLink
-          to="/project"
-          className="btn btn-outline-dark rounded-pill position-absolute start-0 btn-md shadow-sm animate__animated  animate__infinite mb-3"
-          style={{
-            fontWeight: '500',
-            borderWidth: '0px',
-            fontSize: 'clamp(0.9rem, 2vw, 1rem)',
-          }}
-          onMouseEnter={(e) => (e.target.style.transform = 'scale(1.05)')}
-          onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
-        >
-          Back
-        </NavLink>
-        <h1
-          className="text-center animate__animated animate__fadeInDown animate__faster"
-          style={{
-            transition: 'all 0.3s ease',
-            fontWeight: '700',
-            fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
-            color: 'rgb(253 253 253)',
-            textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-            borderBottom: '2px solid #007bff',
-            paddingBottom: '0.5rem',
-            width: '100%',
-            maxWidth: '600px',
-          }}
-          onMouseEnter={(e) => (e.target.style.transform = 'scale(1.02)')}
-          onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
-        >
-          Project Details
-        </h1>
+    <div className="container mt-4 mt-md-5 pt-3 pt-md-4">
+      <div className="row align-items-center mb-2">
+        <div className="col-12 col-md-3 d-flex justify-content-start">
+        </div>
+        <div className="col-12 col-md-6 col-lg-6 text-center my-4">
+          <h1
+            className="animate__animated animate__fadeInDown animate__faster"
+            style={{
+              transition: 'all 0.3s ease',
+              fontWeight: '700',
+              fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
+              color: 'white',
+              textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              borderBottom: '2px solid #007bff',
+              paddingBottom: '0.5rem',
+              width: '100%',
+              maxWidth: '600px',
+              margin: '0 auto',
+            }}
+            onMouseEnter={(e) => (e.target.style.transform = 'scale(1.02)')}
+            onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
+          >
+            Project Details
+          </h1>
+        </div>
       </div>
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
@@ -361,6 +357,7 @@ export const ProjectIndv = () => {
                     fontWeight: '500',
                     padding: '0.5rem 1.5rem',
                     fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                    zIndex: 10,
                   }}
                   onMouseEnter={(e) => (e.target.style.transform = 'scale(1.05)')}
                   onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}

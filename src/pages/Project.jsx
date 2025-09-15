@@ -345,8 +345,40 @@ export const Project = () => {
           }
         `}
       </style>
-      <div className="container mt-5 project-container">
-        <h2 className="mb-4 mb-3 text-white fw-bold text-center">Projects</h2>
+      <div className="container mt-4 project-container">
+        {/* <div className="col-12 col-md-6 col-lg-6 text-center my-4">
+          <h1
+            className="animate__animated animate__fadeInDown animate__faster "
+            style={{
+              transition: 'all 0.3s ease',
+              fontWeight: '700',
+              fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
+              color: 'white',
+              textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              borderBottom: '2px solid #007bff',
+              paddingBottom: '0.5rem',
+              width: '100%',
+              maxWidth: '600px',
+              margin: '0 auto',
+            }}
+            onMouseEnter={(e) => (e.target.style.transform = 'scale(1.02)')}
+            onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
+          >
+            Projects
+          </h1>
+        </div> */}
+        <h2 className="mb-4 mb-3 text-white fw-bold text-center"  style={{
+              transition: 'all 0.3s ease',
+              fontWeight: '700',
+              fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
+              color: 'white',
+              textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              borderBottom: '2px solid #007bff',
+              paddingBottom: '0.5rem',
+              width: '100%',
+              maxWidth: '600px',
+              margin: '0 auto',
+            }}>Projects</h2>
         {/* <Button
           variant="primary"
           className="rounded-pill mb-4 px-4 fw-bold"
@@ -363,9 +395,9 @@ export const Project = () => {
           ref={modalRef}
           aria-labelledby="addProjectModalLabel"
         >
-          <Modal.Header closeButton>
+          {/* <Modal.Header closeButton>
             <Modal.Title id="addProjectModalLabel">Add New Project</Modal.Title>
-          </Modal.Header>
+          </Modal.Header> */}
           <Modal.Body>
             <form onSubmit={handleCreateSubmit}>
               <div className="mb-3">

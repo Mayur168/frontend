@@ -338,7 +338,7 @@ export const About = () => {
                   { skill: "CSS", value: 90 },
                   { skill: "JavaScript", value: 75 },
                   { skill: "React.js", value: 80 },
-                  { skill: "Python-Django", value: 55 },
+                  { skill: "Python-Django", value: 70},
                 ].map(({ skill, value }, index) => (
                   <div key={index} className="mb-3">
                     <div className="d-flex justify-content-between">
